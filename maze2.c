@@ -1,8 +1,8 @@
 /* the following program finds the SHORTEST path, and prints the path and length.
  * path and lenght printed ONLY WHEN A PATH EXISTS 
- * preferance order followed : right > down > left > up 
+ * preference order followed : right > down > left > up 
  * algorithm used : lee algorithm
- * data structures implimented : circular queue and stack (recurtion)
+ * data structures implemented : circular queue and stack (recursion)
  * time complexity : O(n^2)
  */
 
@@ -25,14 +25,14 @@ struct node
 
 struct node queue[MAX];		//queue of type coordinates (x, y)
 int    size = 0;		//queue size
-int    rear = MAX-1;		//queue last ele pointer
-int    front = 0;		//queue first ele pointer
+int    rear = MAX-1;		//queue last element pointer
+int    front = 0;		//queue first element pointer
 
 
 int  i = 0, j = 0;		//[i][j] keeps track of mouse
 
 
-/* deaclaring functions here */
+/* declaring functions here */
 
 int    leemethod (int n, int maze[][n]);
 int    track (int n, int maze[][n], int x, int y, int len);
@@ -61,7 +61,7 @@ int main()
     }
   }
 
-  //inbuilt random func
+  //in-built random func
   //walls are set to -1
   //rat is 1
   //others are 0
@@ -108,8 +108,8 @@ int main()
 /* leemethod FUNCTION STARTS HERE */
 
 /* based on BREADTH FIRST SEARCH
- * makes use of queues (here, i uesd circular queue)
- * also called as wave Expantion
+ * makes use of queues (here, I used circular queue)
+ * also called Wave Expansion
  */
 
 
@@ -144,8 +144,8 @@ int  leemethod (int n, int maze[][n])
       return maze[n-1][n-1];  
     }	
 
-/* things being checked :
- * next block should be in bound, shouldnt be visited previously & not a wall
+/* things being checked:
+ * next block should be in-bound, shouldn't be visited previously & not a wall
  */
 
     if (i >= 0 && i < n && j+1 >= 0 && j+1 < n && visited[i][j+1] == 0 && maze[i][j+1] != -1)
@@ -171,7 +171,7 @@ int  leemethod (int n, int maze[][n])
       visited[i+1][j] = 1;
     }
 
-    //theres a drawback for left and up
+    //there's a drawback for left and up
 
     if (i >= 0 && i < n && j-1 >= 0 && j-1 < n && visited[i][j-1] == 0 && maze[i][j-1] != -1)
     {
@@ -208,9 +208,9 @@ int  leemethod (int n, int maze[][n])
 /*track FUNCTION STARTS HERE*/
 
 /* recursive function
- * logic : if next element > present element 
- *         && not a wall,
- *         then return TRUE.
+ * logic: if next element > present element 
+ *        && not a wall,
+ *        then return TRUE.
  */         
 
 int track(int n, int maze[][n], int x, int y, int len) 
@@ -243,7 +243,7 @@ int track(int n, int maze[][n], int x, int y, int len)
         return 1;
 
 
-    maze[x][y] = temp;		//reseting value, helpful printing
+    maze[x][y] = temp;		//resetting value, helpful printing
     return 0;
   }
 
@@ -272,7 +272,7 @@ void print(int n, int maze[][n])
         colors('b');
         printf("[C]");
       }
-      else if (maze[a][b] == -2)         //path        //yello
+      else if (maze[a][b] == -2)         //path        //yellow
       {
         colors('y');
         printf("[O]");
